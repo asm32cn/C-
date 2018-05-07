@@ -1,0 +1,86 @@
+VERSION 5.00
+Begin VB.Form frm%__ProjectName__% 
+   BackColor       =   &H00000000&
+   Caption         =   "%__ProjectName__%"
+   ClientHeight    =   6000
+   ClientLeft      =   60
+   ClientTop       =   345
+   ClientWidth     =   9000
+   ClipControls    =   0   'False
+   LinkTopic       =   "%__ProjectName__%"
+   LockControls    =   -1  'True
+   ScaleHeight     =   400
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   600
+   StartUpPosition =   2  'ÆÁÄ»ÖÐÐÄ
+   Begin VB.Timer Timer1 
+      Interval        =   25
+      Left            =   0
+      Top             =   0
+   End
+End
+Attribute VB_Name = "frm%__ProjectName__%"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = False
+Attribute VB_PredeclaredId = True
+Attribute VB_Exposed = False
+Option Explicit
+
+
+Private Sub Form_Initialize()
+    Randomize
+    ghbrBackground = CreateSolidBrush(0)
+    ghdcMemory = CreateCompatibleDC(hdc)
+End Sub
+
+Private Sub Form_Paint()
+    Call BitBlt(hdc, 0, 0, m_nClientWidth, m_nClientHeight, ghdcMemory, 0, 0, SRCCOPY)
+End Sub
+
+Private Sub Form_Resize()
+    PA_DoFormResize
+End Sub
+
+Private Sub PA_DoFormResize()
+    Call GetClientRect(hwnd, rectClient)
+
+    m_nClientWidth = rectClient.Right - rectClient.Left
+    m_nClientHeight = rectClient.Bottom - rectClient.Top
+
+    If m_nClientWidth > 0 And m_nClientHeight > 0 Then
+
+        If ghbmMemory <> 0 Then
+            Call DeleteObject(ghbmMemory)
+        End If
+        ghbmMemory = CreateCompatibleBitmap(hdc, m_nClientWidth, m_nClientHeight)
+        Call SelectObject(ghdcMemory, ghbmMemory)
+        
+        PA_DoDisplay
+
+    End If
+
+End Sub
+
+Private Sub Form_Terminate()
+    Call ReleaseDC(hwnd, ghdcMemory)
+    Call DeleteObject(ghbmMemory)
+End Sub
+
+Private Sub Timer1_Timer()
+    PA_DoDisplay
+End Sub
+
+Private Sub PA_DoDisplay()
+	Dim co1 As Long
+	ghPen1 = CreatePen(PS_SOLID, 1, RGB(255, 255, 0))
+        ghPen0 = SelectObject(ghdcMemory, ghPen1)
+
+	Call MoveToEx(ghdcMemory, 10, 10, pt1)
+        Call LineTo(ghdcMemory, 300, 300)
+
+        Call SelectObject(ghdcMemory, ghPen0)
+        Call DeleteObject(ghPen1)
+
+	Me.Refresh
+End Sub
+

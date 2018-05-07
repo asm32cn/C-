@@ -1,0 +1,35 @@
+Type=Exe
+Form=frm%__ProjectName__%.frm
+Module=bas%__ProjectName__%; bas%__ProjectName__%.bas
+ResFile32="%__ProjectName__%.RES"
+IconForm="frm%__ProjectName__%"
+Startup="frm%__ProjectName__%"
+ExeName32="%__ProjectName__%_.exe"
+Command32=""
+Name="%__ProjectName__%"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="www.asm32.net"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+
+[MS Transaction Server]
+AutoRefresh=1

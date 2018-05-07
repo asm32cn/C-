@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<config>
+	<strOutputFile strFile="PaGernateVB6Project2016CS20.resources" />
+	<define>
+		<Data strFile="template-vbp.txt" strResourceName="template-vbp.txt" />
+		<Data strFile="template-frm.txt" strResourceName="template-frm.txt" />
+		<Data strFile="template-bas.txt" strResourceName="template-bas.txt" />
+		<Data strFile="template-res.bin" strResourceName="template-res.bin" />
+		<String strContent="PaGernateVB6Project2016CS20" strResourceName="string.name" />
+	</define>
+</config>
