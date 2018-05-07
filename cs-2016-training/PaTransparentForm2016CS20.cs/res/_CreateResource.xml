@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<config>
+	<strOutputFile strFile="PaTransparentForm2016CS20.resources" />
+	<define>
+		<Image strFile="heart.png" strResourceName="heart.png" />
+	</define>
+</config>
