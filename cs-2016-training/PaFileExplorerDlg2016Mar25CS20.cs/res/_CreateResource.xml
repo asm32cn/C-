@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<config>
+	<strOutputFile strFile="PaFileExplorerDlg2016Mar25CS20.resources" />
+	<define>
+		<Icon strFile="PaFileExplorerDlg2016Mar25CS20.ico" strResourceName="this.ico" />
+		<Image strFile="icon-file.png" strResourceName="icon-file.png" />
+		<Image strFile="icon-hdd.png" strResourceName="icon-hdd.png" />
+		<Image strFile="icon-cdrom.png" strResourceName="icon-cdrom.png" />
+		<Image strFile="icon-folder.png" strResourceName="icon-folder.png" />
+		<Image strFile="icon-folder-open.png" strResourceName="icon-folder-open.png" />
+		<String strContent="PaFileExplorerDlg2016Mar25CS20" strResourceName="string.name" />
+	</define>
+</config>
