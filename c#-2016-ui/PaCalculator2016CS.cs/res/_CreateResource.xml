@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<config>
+	<strOutputFile strFile="PaCalculator2016CS.resources" />
+	<define>
+		<Icon strFile="PaCalculator2016CS.ico" strResourceName="this.ico" />
+		<String strContent="PaCalculator2016CS" strResourceName="string.name" />
+	</define>
+</config>
