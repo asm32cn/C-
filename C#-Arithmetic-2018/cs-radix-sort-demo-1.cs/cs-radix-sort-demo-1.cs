@@ -2,7 +2,7 @@
 using System;
 
 class LsdRedixSortDemo1{
-    private int[] radix = {1, 1, 10, 100};
+    private readonly int[] radix = {1, 1, 10, 100};
     private const int dn = 3;
     private const int k = 10;
     private int[] C = new int[k];
