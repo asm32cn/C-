@@ -3,7 +3,7 @@ using System;
 
 class CsMsGetHashCodeDemo1{
 	public static void Main(string[] args){
-		string[] A_strKeys = {"C", "C++", "Java", "C#", "Python", "Go", "Scala", "vb.net", "JavaScript", "PHP", "Perl", "Ruby"};
+		string[] A_strKeys = {"C", "C++", "Java", "C#", "Python", "Go", "Scala", "vb.net", "JavaScript", "PHP", "Perl", "Ruby", "绝世"};
 
 		CsMsGetHashCodeDemo1 cmhcd = new CsMsGetHashCodeDemo1();
 		for(int i = 0, n = A_strKeys.Length; i < n; i++){
@@ -46,4 +46,5 @@ class CsMsGetHashCodeDemo1{
 9          PHP               3457875952  25
 10         Perl              4059615984   6
 11         Ruby              3840459502  22
+12         绝世                2375044882   1
 */
