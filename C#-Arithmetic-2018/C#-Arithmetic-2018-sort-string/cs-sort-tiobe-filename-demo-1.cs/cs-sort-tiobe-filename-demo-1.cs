@@ -77,8 +77,9 @@ class cs_sort_tiobe_filename_demo_1{
 		}
 
 
-		// Func<int, int> GetIndex = delegate (int i) { return buff[i, 1]; };
-		// Func<int, int> GetData = (i) => { return buff[GetIndex(i), 2]; }
+		// int c = 1;
+		// Action<int> add = delegate(int i){ c += i; Console.WriteLine("c add " + i + " = " + c); };
+		// add(2); // c add 2 = 3
 
 		_GetValue GetIndex = delegate(int i) { return buff[i, 1]; };
 		_SetValue SetIndex = delegate(int i, int nn) { return (buff[i, 1] = nn); };
