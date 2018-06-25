@@ -58,7 +58,8 @@ class cs_sort_tiobe_filename_demo_1{
 			buff[i, 2] = nDatespan;
 		}
 
-		Func<int, int> GetIndex = (i) => { return buff[i, 1]; };
+		Func<int, int> GetIndex = delegate(int i) { return buff[i, 1]; };
+		// Func<int, int> GetIndex = (i) => { return buff[i, 1]; };
 		// Func<int, int, int> SetIndex = (i, nn) => { return(buff[i, 1] = nn); };
 		Action<int, int> SetIndex = (i, nn) => { buff[i, 1] = nn; };
 		Func<int, int> GetData = (i) => { return buff[GetIndex(i), 2]; };
