@@ -2,21 +2,29 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Collections;
 
 class cs_base64_demo_1{
 	public const string _keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 	public static void Main(string[] args){
 		cs_base64_demo_1 cbd = new cs_base64_demo_1();
 
-		string strSource = "cs-base64-demo-1.cs";
+		string strSource = "cs-base64-demo-1.cs\n程序中书写着所见所闻所感，编译着心中的万水千山。";
 		byte[] data = Encoding.UTF8.GetBytes(strSource);
+		// string strEncoded = cbd.Base64Encoder(data);
+		string strEncoded = Convert.ToBase64String(data);
+		byte[] dec = cbd.Base64Decoder(strEncoded);
 
-		Console.WriteLine(cbd.Base64Encoder(data));
-		Console.WriteLine(cbd.Base64Encoder1(data));
 		Console.WriteLine(strSource);
+		// Console.WriteLine(strEncoded);
+		Console.WriteLine(cbd.Base64Encoder(data));
+		Console.WriteLine(cbd.Base64Encoder2(data));
+		Console.WriteLine("Convert.ToBase64String:\n" + Convert.ToBase64String(data));
+		Console.WriteLine( Encoding.UTF8.GetString(dec) );
+		Console.WriteLine( Encoding.UTF8.GetString(Convert.FromBase64String(strEncoded)) );
 	}
 
-	public string Base64Encoder1(byte[] data){
+	public string Base64Encoder2(byte[] data){
 		int nCount = data.Length;
 		StringBuilder sb = new StringBuilder();
 		// sb.Append(nCount);
@@ -77,11 +85,48 @@ class cs_base64_demo_1{
 		}
 		return sb.ToString();
 	}
+
+	private Hashtable ht = new Hashtable();
+	public void InitHashTable(){
+		ht.Clear();
+		for(int i = 0, l = _keyStr.Length; i < l; i++)
+			ht.Add(_keyStr[i], i);
+	}
+
+	public byte[] Base64Decoder(string s){
+		InitHashTable();
+		byte chr1 = 0, chr2 = 0, chr3 = 0;
+		int enc1 = 0, enc2 = 0, enc3 = 0, enc4 = 0;
+		int i = 0, n = 0, nCount = s.Length;
+		byte[] data = new byte[nCount * 3 / 4];
+		Console.WriteLine("nCount = " + nCount);
+		while(i < nCount){
+			enc1 = (int)ht[s[i++]];
+			enc2 = (int)ht[s[i++]];
+			enc3 = (int)ht[s[i++]];
+			enc4 = (int)ht[s[i++]];
+
+			chr1 = (byte)((enc1 << 2) | (enc2 >> 4));
+			chr2 = (byte)(((enc2 & 15) << 4) | (enc3 >> 2));
+			chr3 = (byte)(((enc3 & 3) << 6) | enc4);
+			data[n++] = chr1;
+			if(enc3 != 64) data[n++] = chr2;
+			if(enc4 != 64) data[n++] = chr3;
+		}
+		return data;
+	}
 }
 
 /*
-19
-Y3MtYmFzZTY0LWRlbW8tMS5jcw==
-Y3MtYmFzZTY0LWRlbW8tMS5jcw==
+nCount = 124
 cs-base64-demo-1.cs
+程序中书写着所见所闻所感，编译着心中的万水千山。
+Y3MtYmFzZTY0LWRlbW8tMS5jcwrnqIvluo/kuK3kuablhpnnnYDmiYDop4HmiYDpl7vmiYDmhJ/vvIznvJbor5HnnYDlv4PkuK3nmoTkuIfmsLTljYPlsbHjgbI=
+Y3MtYmFzZTY0LWRlbW8tMS5jcwrnqIvluo/kuK3kuablhpnnnYDmiYDop4HmiYDpl7vmiYDmhJ/vvIznvJbor5HnnYDlv4PkuK3nmoTkuIfmsLTljYPlsbHjgAI=
+Convert.ToBase64String:
+Y3MtYmFzZTY0LWRlbW8tMS5jcwrnqIvluo/kuK3kuablhpnnnYDmiYDop4HmiYDpl7vmiYDmhJ/vvIznvJbor5HnnYDlv4PkuK3nmoTkuIfmsLTljYPlsbHjgII=
+cs-base64-demo-1.cs
+程序中书写着所见所闻所感，编译着心中的万水千山。
+cs-base64-demo-1.cs
+程序中书写着所见所闻所感，编译着心中的万水千山。
 */
