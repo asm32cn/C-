@@ -28,10 +28,9 @@ class cs_base64_demo_1{
 	}
 
 	public string Base64Encoder2(byte[] data){
-		int nCount = data.Length;
-		StringBuilder sb = new StringBuilder();
-		int i = 0;
+		int i = 0, nCount = data.Length;
 		byte b1, b2, b3;
+		StringBuilder sb = new StringBuilder();
 		while(i < nCount){
 			b1 = data[i++];
 			sb.Append( _keyStr[b1 >> 2] );
@@ -55,10 +54,10 @@ class cs_base64_demo_1{
 	}
 
 	public string Base64Encoder(byte[] data){
-		StringBuilder sb = new StringBuilder();
+		int i = 0, nCount = data.Length;
 		byte chr1 = 0, chr2 = 0, chr3 = 0;
 		int enc1 = 0, enc2 = 0, enc3 = 0, enc4 = 0;
-		int i = 0, nCount = data.Length;
+		StringBuilder sb = new StringBuilder();
 		while(i < nCount){
 			chr1 = data[i++];
 			enc1 = chr1 >> 2;
